@@ -1,0 +1,31 @@
+﻿@page
+@model TestDI.Pages.IndexModel
+@{
+    ViewData["Title"] = "Logs";
+}
+
+<h2>Log Information</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Trace Identifier</th>
+            <th>Transient Operation ID</th>
+            <th>Scoped Operation ID</th>
+            <th>Singleton Operation ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model.LogEntries)
+        {
+            <tr>
+                <td>@log.Timestamp</td>
+                <td>@log.TraceIdentifier</td>
+                <td>@log.TransientOperationId</td>
+                <td>@log.ScopedOperationId</td>
+                <td>@log.SingletonOperationId</td>
+            </tr>
+        }
+    </tbody>
+</table>
