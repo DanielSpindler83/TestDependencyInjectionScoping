@@ -2,6 +2,20 @@
 
 namespace TestDI;
 
+/*
+    We register our own custom middleware component.
+    This runs on the http request as it comes in, before it hits our actual app code.
+    We register this in program.cs via line =             app.UseMyMiddleware();
+    The middleware injects the singleton into its constructor. Persists for lifetime of the app.
+    The scoped and transient objects are injected into the main middleware InvokeAsync method.
+    The scoped instance will live on for the life of the HTTP request - we use logging to see this (match trace id to different object access to confirm).
+    The transient instance will live ONLY for this method call and be disposed of when the below method completes.
+    Any further calls for a transient scoped object will result in a new one being created.
+    
+    NOTE we log into to the console, but also persiste the info into a member of the Singleton object.
+    Via a razor page we will show all log entries.
+*/
+
 public class MyMiddleware
 {
     private readonly RequestDelegate _next;
