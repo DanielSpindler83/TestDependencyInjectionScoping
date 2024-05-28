@@ -12,7 +12,7 @@ namespace TestDI;
     The transient instance will live ONLY for this method call and be disposed of when the below method completes.
     Any further calls for a transient scoped object will result in a new one being created.
     
-    NOTE we log into to the console, but also persiste the info into a member of the Singleton object.
+    NOTE we log this to the console, but also persist the info into a member of the Singleton object.
     Via a razor page we will show all log entries.
 */
 
